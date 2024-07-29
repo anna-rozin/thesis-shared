@@ -813,36 +813,89 @@ summary(model_L2_prod_CV)
 
 
 
+
+
 ############# CDI T1 and T2 testing gain
-# I am not sure if I am doing this correctly......
+#  I am not sure if I am doing this correctly......
 
 # Calculate CDI gain
 both_counts_T2 <- both_counts_T2 %>%
   left_join(both_counts_T1 %>% select(ID_lab, age_CDI_T1 = age_CDI), by = "ID_lab") %>%
   mutate(CDI_gain = age_CDI - age_CDI_T1)
 
-#l1 comp
+# L1 Comprehension
 # Define the formula for L1 comprehension including CDI gain
-formula_L1_CV_comp_gain <- CV_COUNT_Avg ~ age_CDI + AWC_COUNT_Avg * Mono_Bil + CT_COUNT_Avg + Sex + Overlap_Avg + CDI_gain
+formula_L1_CV_comp_gain <- L1_comprehension ~ age_CDI + AWC_COUNT_Avg * Mono_Bil + CT_COUNT_Avg + Sex + Overlap_Avg + CDI_gain
 # Run the multiple linear regression for L1 comprehension with CDI gain
 model_L1_CV_comp_gain <- lm(formula_L1_CV_comp_gain, data = both_counts_T2)
 # Print the summary of the model
 summary(model_L1_CV_comp_gain)
 
-#l1 prod
+# Define the original model for L1 comprehension without CDI gain
+formula_L1_CV_comp_no_gain <- L1_comprehension ~ age_CDI + AWC_COUNT_Avg * Mono_Bil + CT_COUNT_Avg + Sex + Overlap_Avg
+# Run the model without CDI gain
+model_L1_CV_comp_no_gain <- lm(formula_L1_CV_comp_no_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L1_CV_comp_no_gain)
+
+# Compare models using ANOVA for L1 comprehension
+anova_result_comp <- anova(model_L1_CV_comp_no_gain, model_L1_CV_comp_gain)
+print(anova_result_comp)
+
+# L1 Production
 # Define the formula for L1 production including CDI gain
-formula_L1_CV_prod_gain <- CV_COUNT_Avg ~ age_CDI + AWC_COUNT_Avg * Mono_Bil + CT_COUNT_Avg + Sex + Overlap_Avg + CDI_gain
+formula_L1_CV_prod_gain <- L1_production ~ age_CDI + AWC_COUNT_Avg * Mono_Bil + CT_COUNT_Avg + Sex + Overlap_Avg + CDI_gain
 # Run the multiple linear regression for L1 production with CDI gain
 model_L1_CV_prod_gain <- lm(formula_L1_CV_prod_gain, data = both_counts_T2)
 # Print the summary of the model
 summary(model_L1_CV_prod_gain)
 
-#
-# Define the original model without CDI gain
-formula_L1_CV_comp_no_gain <- CV_COUNT_Avg ~ age_CDI + AWC_COUNT_Avg * Mono_Bil + CT_COUNT_Avg + Sex + Overlap_Avg
+# Define the original model for L1 production without CDI gain
+formula_L1_CV_prod_no_gain <- L1_production ~ age_CDI + AWC_COUNT_Avg * Mono_Bil + CT_COUNT_Avg + Sex + Overlap_Avg
 # Run the model without CDI gain
-model_L1_CV_comp_no_gain <- lm(formula_L1_CV_comp_no_gain, data = both_counts_T2)
+model_L1_CV_prod_no_gain <- lm(formula_L1_CV_prod_no_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L1_CV_prod_no_gain)
 
-# Compare models using ANOVA
-anova_result_gain <- anova(model_L1_CV_comp_no_gain, model_L1_CV_comp_gain)
-print(anova_result_gain)
+# Compare models using ANOVA for L1 production
+anova_result_prod <- anova(model_L1_CV_prod_no_gain, model_L1_CV_prod_gain)
+print(anova_result_prod)
+
+
+# L2 Comprehension
+# Define the formula for L2 comprehension without CDI_gain
+formula_L2_comp_no_gain <- L2_comprehension ~ age_CDI + AWC_COUNT_Avg + CT_COUNT_Avg + Sex + Overlap_Avg
+# Run the multiple linear regression for L2 comprehension without CDI_gain
+model_L2_comp_no_gain <- lm(formula_L2_comp_no_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L2_comp_no_gain)
+
+# Define the formula for L2 comprehension including CDI_gain
+formula_L2_comp_gain <- L2_comprehension ~ age_CDI + AWC_COUNT_Avg + CT_COUNT_Avg + Sex + Overlap_Avg + CDI_gain
+# Run the multiple linear regression for L2 comprehension with CDI_gain
+model_L2_comp_gain <- lm(formula_L2_comp_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L2_comp_gain)
+
+# Compare models using ANOVA for L2 comprehension
+anova_result_L2_comp <- anova(model_L2_comp_no_gain, model_L2_comp_gain)
+print(anova_result_L2_comp)
+
+# L2 Production
+# Define the formula for L2 production without CDI_gain
+formula_L2_prod_no_gain <- L2_production ~ age_CDI + AWC_COUNT_Avg + CT_COUNT_Avg + Sex + Overlap_Avg
+# Run the multiple linear regression for L2 production without CDI_gain
+model_L2_prod_no_gain <- lm(formula_L2_prod_no_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L2_prod_no_gain)
+
+# Define the formula for L2 production including CDI_gain
+formula_L2_prod_gain <- L2_production ~ age_CDI + AWC_COUNT_Avg + CT_COUNT_Avg + Sex + Overlap_Avg + CDI_gain
+# Run the multiple linear regression for L2 production with CDI_gain
+model_L2_prod_gain <- lm(formula_L2_prod_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L2_prod_gain)
+
+# Compare models using ANOVA for L2 production
+anova_result_L2_prod <- anova(model_L2_prod_no_gain, model_L2_prod_gain)
+print(anova_result_L2_prod)
