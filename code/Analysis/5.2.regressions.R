@@ -899,3 +899,85 @@ summary(model_L2_prod_gain)
 # Compare models using ANOVA for L2 production
 anova_result_L2_prod <- anova(model_L2_prod_no_gain, model_L2_prod_gain)
 print(anova_result_L2_prod)
+
+
+
+
+### Concept and Total vocab CDI GAIN
+
+# L1 Conceptual Comprehension
+# Define the formula for L1 conceptual comprehension without CDI_gain
+formula_L1_conceptual_comp_no_gain <- L1_conceptual_comprehension ~ age_CDI + AWC_COUNT_Avg + CT_COUNT_Avg + Sex + Overlap_Avg
+# Run the multiple linear regression for L1 conceptual comprehension without CDI_gain
+model_L1_conceptual_comp_no_gain <- lm(formula_L1_conceptual_comp_no_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L1_conceptual_comp_no_gain)
+
+# Define the formula for L1 conceptual comprehension including CDI_gain
+formula_L1_conceptual_comp_gain <- L1_conceptual_comprehension ~ age_CDI + AWC_COUNT_Avg + CT_COUNT_Avg + Sex + Overlap_Avg + CDI_gain
+# Run the multiple linear regression for L1 conceptual comprehension with CDI_gain
+model_L1_conceptual_comp_gain <- lm(formula_L1_conceptual_comp_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L1_conceptual_comp_gain)
+
+# Compare models using ANOVA for L1 conceptual comprehension
+anova_result_L1_conceptual_comp <- anova(model_L1_conceptual_comp_no_gain, model_L1_conceptual_comp_gain)
+print(anova_result_L1_conceptual_comp)
+
+# L1 Total Comprehension
+# Define the formula for L1 total comprehension without CDI_gain
+formula_L1_total_comp_no_gain <- L1_total_comprehension ~ age_CDI + AWC_COUNT_Avg + CT_COUNT_Avg + Sex + Overlap_Avg
+# Run the multiple linear regression for L1 total comprehension without CDI_gain
+model_L1_total_comp_no_gain <- lm(formula_L1_total_comp_no_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L1_total_comp_no_gain)
+
+# Define the formula for L1 total comprehension including CDI_gain
+formula_L1_total_comp_gain <- L1_total_comprehension ~ age_CDI + AWC_COUNT_Avg + CT_COUNT_Avg + Sex + Overlap_Avg + CDI_gain
+# Run the multiple linear regression for L1 total comprehension with CDI_gain
+model_L1_total_comp_gain <- lm(formula_L1_total_comp_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L1_total_comp_gain)
+
+# Compare models using ANOVA for L1 total comprehension
+anova_result_L1_total_comp <- anova(model_L1_total_comp_no_gain, model_L1_total_comp_gain)
+print(anova_result_L1_total_comp)
+
+# L1 Conceptual Production
+# Define the formula for L1 conceptual production without CDI_gain
+formula_L1_conceptual_prod_no_gain <- L1_conceptual_production ~ age_CDI + AWC_COUNT_Avg + CT_COUNT_Avg + Sex + Overlap_Avg
+# Run the multiple linear regression for L1 conceptual production without CDI_gain
+model_L1_conceptual_prod_no_gain <- lm(formula_L1_conceptual_prod_no_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L1_conceptual_prod_no_gain)
+
+# Define the formula for L1 conceptual production including CDI_gain
+formula_L1_conceptual_prod_gain <- L1_conceptual_production ~ age_CDI + AWC_COUNT_Avg + CT_COUNT_Avg + Sex + Overlap_Avg + CDI_gain
+# Run the multiple linear regression for L1 conceptual production with CDI_gain
+model_L1_conceptual_prod_gain <- lm(formula_L1_conceptual_prod_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L1_conceptual_prod_gain)
+
+# Compare models using ANOVA for L1 conceptual production
+anova_result_L1_conceptual_prod <- anova(model_L1_conceptual_prod_no_gain, model_L1_conceptual_prod_gain)
+print(anova_result_L1_conceptual_prod)
+
+# L1 Total Production
+# Define the formula for L1 total production without CDI_gain
+formula_L1_total_prod_no_gain <- L1_total_production ~ age_CDI + AWC_COUNT_Avg + CT_COUNT_Avg + Sex + Overlap_Avg
+# Run the multiple linear regression for L1 total production without CDI_gain
+model_L1_total_prod_no_gain <- lm(formula_L1_total_prod_no_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L1_total_prod_no_gain)
+
+# Define the formula for L1 total production including CDI_gain
+formula_L1_total_prod_gain <- L1_total_production ~ age_CDI + AWC_COUNT_Avg + CT_COUNT_Avg + Sex + Overlap_Avg + CDI_gain
+# Run the multiple linear regression for L1 total production with CDI_gain
+model_L1_total_prod_gain <- lm(formula_L1_total_prod_gain, data = both_counts_T2)
+# Print the summary of the model
+summary(model_L1_total_prod_gain)
+
+# Compare models using ANOVA for L1 total production
+anova_result_L1_total_prod <- anova(model_L1_total_prod_no_gain, model_L1_total_prod_gain)
+print(anova_result_L1_total_prod)
+
