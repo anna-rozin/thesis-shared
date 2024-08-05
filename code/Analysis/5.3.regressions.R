@@ -217,7 +217,7 @@ model_conceptual_comp <- lm(formula_conceptual_comp, data = both_counts_T1)
 summary(model_conceptual_comp)
 
 
-# Conceptual Production ---- ****
+# Conceptual Production ---- 
 
 # Define the formula for conceptual vocab production
 formula_conceptual_prod <- L1_conceptual_production ~ AWC_COUNT_Avg * Mono_Bil + age_CDI + CT_COUNT_Avg * Mono_Bil + Sex + Overlap_Avg
@@ -434,6 +434,7 @@ summary(model_total_comp_T2)
 interact_plot(model_total_comp_T2, pred = CT_COUNT_Avg, modx = Mono_Bil, plot.points = TRUE)
 
 
+
 # Total Production ----
 
 # Define the formula for conceptual vocab production
@@ -566,20 +567,20 @@ both_counts_T2 <- both_counts_T2 %>%
 
 # regressions RQ 1 (AWC)
 
-# Fit the model for gain_L1_comprehension ***
-model_gain_L1_comprehension <- lm(gain_L1_comprehension ~ AWC_COUNT_Avg * Mono_Bil + age_CDI + CT_COUNT_Avg * Mono_Bil + Sex + Overlap_Avg, data = both_counts_T2)
+# Fit the model for gain_L1_comprehension 
+model_gain_L1_comprehension <- lm(gain_L1_comprehension ~ AWC_COUNT_Avg * Mono_Bil + age_CDI + Sex + Overlap_Avg, data = both_counts_T2)
 summary(model_gain_L1_comprehension)
 
 # Fit the model for gain_L2_comprehension
-model_gain_L2_comprehension <- lm(gain_L2_comprehension ~ AWC_COUNT_Avg + age_CDI + CT_COUNT_Avg  + Sex + Overlap_Avg, data = both_counts_T2)
+model_gain_L2_comprehension <- lm(gain_L2_comprehension ~ AWC_COUNT_Avg + age_CDI  + Sex + Overlap_Avg, data = both_counts_T2)
 summary(model_gain_L2_comprehension)
 
 # Fit the model for gain_L1_production
-model_gain_L1_production <- lm(gain_L1_production ~ AWC_COUNT_Avg * Mono_Bil + age_CDI + CT_COUNT_Avg * Mono_Bil + Sex + Overlap_Avg, data = both_counts_T2)
+model_gain_L1_production <- lm(gain_L1_production ~ AWC_COUNT_Avg * Mono_Bil + age_CDI + Sex + Overlap_Avg, data = both_counts_T2)
 summary(model_gain_L1_production)
 
-# Fit the model for gain_L2_production *
-model_gain_L2_production <- lm(gain_L2_production ~ AWC_COUNT_Avg + age_CDI + CT_COUNT_Avg + Sex + Overlap_Avg, data = both_counts_T2)
+# Fit the model for gain_L2_production 
+model_gain_L2_production <- lm(gain_L2_production ~ AWC_COUNT_Avg + age_CDI + Sex + Overlap_Avg, data = both_counts_T2)
 summary(model_gain_L2_production)
 
 
